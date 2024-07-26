@@ -218,26 +218,5 @@ public class CameraPosition : MonoBehaviour
             yield return null;
         }
     }
-/*     private IEnumerator CameraPositionMoveContinueIEnumerator()
-    {
-        while (true)
-        {
-            Vector3 startPosition = position1;
-            Vector3 endPosition = position2;
-            float duration = speed;
 
-            float timeElapsed = 0f;
-
-            while (timeElapsed < duration)
-            {
-                float t = timeElapsed / duration;
-                transform.position = Vector3.Lerp(startPosition, endPosition, t);
-                timeElapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            // 等待一段时间再开始下一次移动
-            yield return new WaitForSeconds(0.0001f);
-        }
-    } */
 }

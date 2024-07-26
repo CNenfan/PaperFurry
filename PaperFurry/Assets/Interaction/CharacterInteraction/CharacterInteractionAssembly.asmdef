@@ -1,0 +1,17 @@
+{
+    "name": "CharacterInteractionAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f42cd8fef8d9bee4fa6b59bc3186eb37",
+        "GUID:c525d3bb52e8b0248be5a12cd0c0e8fa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

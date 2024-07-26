@@ -1,0 +1,2 @@
+https://github.com/buinger/BuingerUnityScripts/blob/main/QiUiEditor.unitypackage
+https://www.bilibili.com/video/BV1Zs421u7C4/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=3617839eb29c9af298d41c22ad2493b4
