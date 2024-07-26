@@ -1,0 +1,4 @@
+repository "PaperFurry@cnenfan@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
