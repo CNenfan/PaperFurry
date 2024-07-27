@@ -20,12 +20,16 @@ public class CharacterInteractionPosition : MonoBehaviour
     
     private Vector3 originalScale;
     [SerializeField] private float scaleSpeed = 0.2f; // 缩放速度
-    [SerializeField] private float minScale = 0.08f; // 最小缩放比例
+    [SerializeField] private float minScale = 0.05f; // 最小缩放比例
     [SerializeField] private float maxScale = 0.2f; // 最大缩放比例
+
+    // 定义y轴位置的最小和最大值
+    [SerializeField] private float minYPosition = 0f;
+    [SerializeField] private float maxYPosition = 2f;
 
     // 定义z轴位置的最小和最大值
     [SerializeField] private float minZPosition = -2.0f;
-    [SerializeField] private float maxZPosition = 3.0f; 
+    [SerializeField] private float maxZPosition = 10.0f; 
     
     /// 修改结束
 
@@ -278,6 +282,10 @@ public class CharacterInteractionPosition : MonoBehaviour
                 {
                     vertical += verticalIncrement;
                 }
+
+                position_now_y += vertical / 100;
+                position_now_y = Mathf.Clamp(position_now_y, minYPosition, maxYPosition);
+
                 position_now_z += vertical / 20;
                 position_now_z = Mathf.Clamp(position_now_z, minZPosition, maxZPosition);
             }
@@ -291,6 +299,10 @@ public class CharacterInteractionPosition : MonoBehaviour
                 {
                     vertical += verticalIncrement;
                 }
+
+                position_now_y += vertical / 100;
+                position_now_y = Mathf.Clamp(position_now_y, minYPosition, maxYPosition);
+
                 position_now_z += vertical / 20;
                 position_now_z = Mathf.Clamp(position_now_z, minZPosition, maxZPosition);
             }

@@ -371,10 +371,12 @@ MonoBehaviour:
   speed_max_x: 1
   speed_max_y: 1
   scaleSpeed: 0.2
-  minScale: 0.08
+  minScale: 0.05
   maxScale: 0.2
+  minYPosition: 0
+  maxYPosition: 2
   minZPosition: -2
-  maxZPosition: 3
+  maxZPosition: 10
   KeyCodeUp: 119
   KeyCodeDown: 115
   KeyCodeLeft: 97
@@ -468,7 +470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269576717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 10}
+  m_LocalPosition: {x: 0, y: 2.5, z: 20}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -539,10 +541,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafd7857d58e93541862be9761c307c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1269576719}
+  spriteRenderer: {fileID: 0}
   windowSize: 20
   minIndex: 1
   maxIndex: 281
+  currentImageIndex: 180
   lastPositionX: 0
   currentFrameLength: 0
   frameLength: 0.08

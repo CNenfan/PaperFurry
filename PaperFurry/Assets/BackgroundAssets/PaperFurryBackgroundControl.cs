@@ -6,16 +6,16 @@ public class PaperFurryBackgroundControl : MonoBehaviour
 {
     [Header("Sprite Settings")]
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private int windowSize = 5; // 动态加载的图片数量
+    [SerializeField] private int windowSize = 20; // 动态加载的图片数量
     [SerializeField] private int minIndex = 1;
     [SerializeField] private int maxIndex = 281;
-    private int currentImageIndex = 20;
+    [SerializeField] private int currentImageIndex = 180;
     private Dictionary<int, Sprite> loadedSprites = new Dictionary<int, Sprite>();
 
     [Space][Space][Header("Movement Settings")]
     [SerializeField] private float lastPositionX;
     [SerializeField] private float currentFrameLength = 0f;
-    [SerializeField] private float frameLength = 0.1f; // 每帧长度的X坐标变化量
+    [SerializeField] private float frameLength = 0.08f; // 每帧长度的X坐标变化量
     [SerializeField] private bool isMovingRight = true; // 物体初始移动方向
     
 
