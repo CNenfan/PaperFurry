@@ -19,9 +19,13 @@ public class CharacterInteractionPosition : MonoBehaviour
     /// </summary>
     
     private Vector3 originalScale;
-    [SerializeField] private float scaleSpeed = 0.1f; // 缩放速度
-    [SerializeField] private float minScale = 0.5f; // 最小缩放比例
-    [SerializeField] private float maxScale = 1.5f; // 最大缩放比例
+    [SerializeField] private float scaleSpeed = 0.2f; // 缩放速度
+    [SerializeField] private float minScale = 0.08f; // 最小缩放比例
+    [SerializeField] private float maxScale = 0.2f; // 最大缩放比例
+
+    // 定义z轴位置的最小和最大值
+    [SerializeField] private float minZPosition = -2.0f;
+    [SerializeField] private float maxZPosition = 3.0f; 
     
     /// 修改结束
 
@@ -263,6 +267,7 @@ public class CharacterInteractionPosition : MonoBehaviour
                 transform.localScale = newScale;
             }
 
+
             if (axis_y_up && Input.GetKey(KeyCodeUp) && !isJumping)
             {
                 // 计算垂直方向的移动增量
@@ -274,6 +279,7 @@ public class CharacterInteractionPosition : MonoBehaviour
                     vertical += verticalIncrement;
                 }
                 position_now_z += vertical / 20;
+                position_now_z = Mathf.Clamp(position_now_z, minZPosition, maxZPosition);
             }
             else if (axis_y_down && Input.GetKey(KeyCodeDown) && !isJumping)
             {
@@ -286,10 +292,11 @@ public class CharacterInteractionPosition : MonoBehaviour
                     vertical += verticalIncrement;
                 }
                 position_now_z += vertical / 20;
+                position_now_z = Mathf.Clamp(position_now_z, minZPosition, maxZPosition);
             }
 
 
-            
+
             // 跳跃逻辑
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)) && !isJumping  && axis_jump)
             {
