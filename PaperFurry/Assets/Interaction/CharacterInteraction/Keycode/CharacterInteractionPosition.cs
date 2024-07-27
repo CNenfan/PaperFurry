@@ -6,10 +6,24 @@ using System;
 public class CharacterInteractionPosition : MonoBehaviour
 {
     public static float position_now_x,position_now_y,position_now_z;
-    //默认开启左右移动，不开启上下移动，开启跳跃，跳跃模式为伪跳跃，无地板监测
+    //默认开启左右移动，不开启上下移动(PaperFurry修改为模拟前后缩放)，开启跳跃，跳跃模式为伪跳跃，无地板监测
     //开启地板检测请将jumpMode设置为false
-    public static bool axis_x_left = true,axis_x_right = true,axis_y_up = false,axis_y_down = false,axis_jump = true,jumpMode = true;
+
+    //                                                    PaperFurry在此处修改了axis_y_up与axis_y_down的布尔值
+    public static bool axis_x_left = true,axis_x_right = true,axis_y_up = true,axis_y_down = true,axis_jump = true,jumpMode = true;
     public float speed = 1f,speed_max_x = 1f,speed_max_y = 1f;
+
+    /// <summary>
+    /// PaperFurry修改点
+    /// 为了适应游戏，在这里我们更改为缩放
+    /// </summary>
+    
+    private Vector3 originalScale;
+    [SerializeField] private float scaleSpeed = 0.1f; // 缩放速度
+    [SerializeField] private float minScale = 0.5f; // 最小缩放比例
+    [SerializeField] private float maxScale = 1.5f; // 最大缩放比例
+    
+    /// 修改结束
 
     public void PositionSet(float input_x,float input_y = 0,float input_z = 0)
     {
@@ -219,6 +233,36 @@ public class CharacterInteractionPosition : MonoBehaviour
                 position_now_x += horizontal / 20;
             }
 
+            /// <summary>
+            /// PaperFurry修改点
+            /// 为了适应游戏，在这里我们更改为缩放
+            /// </summary>
+            /// 
+            originalScale = transform.localScale;
+            
+            if (Input.GetKey(KeyCodeDown))
+            {
+                float scaleMultiplier = 1 + scaleSpeed * Time.fixedDeltaTime;
+                Vector3 newScale = originalScale * scaleMultiplier;
+                
+                // 限制缩放范围
+                newScale = Vector3.ClampMagnitude(newScale, maxScale);
+                newScale = Vector3.Max(newScale, new Vector3(minScale, minScale, minScale));
+                
+                transform.localScale = newScale;
+            }
+            else if (Input.GetKey(KeyCodeUp))
+            {
+                float scaleMultiplier = 1 - scaleSpeed * Time.fixedDeltaTime;
+                Vector3 newScale = originalScale * scaleMultiplier;
+                
+                // 限制缩放范围
+                newScale = Vector3.ClampMagnitude(newScale, maxScale);
+                newScale = Vector3.Max(newScale, new Vector3(minScale, minScale, minScale));
+                
+                transform.localScale = newScale;
+            }
+
             if (axis_y_up && Input.GetKey(KeyCodeUp) && !isJumping)
             {
                 // 计算垂直方向的移动增量
@@ -229,7 +273,7 @@ public class CharacterInteractionPosition : MonoBehaviour
                 {
                     vertical += verticalIncrement;
                 }
-                position_now_y += vertical / 20;
+                position_now_z += vertical / 20;
             }
             else if (axis_y_down && Input.GetKey(KeyCodeDown) && !isJumping)
             {
@@ -241,34 +285,9 @@ public class CharacterInteractionPosition : MonoBehaviour
                 {
                     vertical += verticalIncrement;
                 }
-                position_now_y += vertical / 20;
-            }
-/*             // 未拆分变量的代码段
-            if ((Input.GetKey(KeyCodeLeft) || Input.GetKey(KeyCodeRight)) && axis_x)
-            {
-                // 计算水平方向的移动增量
-                float horizontalIncrement = Input.GetKey(KeyCodeLeft) ? -0.1f * speed * Time.fixedDeltaTime : 0.1f * speed * Time.fixedDeltaTime;
-                
-                // 更新水平位置，同时限制速度
-                if (Mathf.Abs(horizontal) < speed_max_x)
-                {
-                    horizontal += horizontalIncrement;
-                }
-                position_now_x += horizontal / 20;
+                position_now_z += vertical / 20;
             }
 
-            if ((Input.GetKey(KeyCodeUp) || Input.GetKey(KeyCodeDown)) && axis_y)
-            {
-                // 计算垂直方向的移动增量
-                float verticalIncrement = Input.GetKey(KeyCodeUp) ? 0.1f * speed * Time.fixedDeltaTime : -0.1f * speed * Time.fixedDeltaTime;
-                
-                // 更新垂直位置，同时限制速度
-                if (Mathf.Abs(vertical) < speed_max_y)
-                {
-                    vertical += verticalIncrement;
-                }
-                position_now_y += vertical / 20;
-            } */
 
             
             // 跳跃逻辑
@@ -343,7 +362,7 @@ public class CharacterInteractionPosition : MonoBehaviour
 
     void Start() //测试用
     {
-        PositionSet(0,25,0);
+        PositionSet(0,0,0);
         PositionMove("on");
     }
 }
