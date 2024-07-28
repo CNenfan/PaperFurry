@@ -355,7 +355,9 @@ MonoBehaviour:
   characterInteractionPosition: {fileID: 885319640}
   starParticles: {fileID: 0}
   isEffects: 0
-  toFlip: 0
+  isFacingRight: 1
+  lastFacingRight: 1
+  flipDuration: 0.5
 --- !u!114 &885319640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +440,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 25.002441, y: 35}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
