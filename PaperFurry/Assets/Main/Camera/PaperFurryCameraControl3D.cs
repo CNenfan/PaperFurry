@@ -18,6 +18,6 @@ public class PaperFurryCameraControl3D : MonoBehaviour
 
     void Update() 
     {
-        cP.CameraPositionSet(PaperFurryPosition3D.position_now_x,PaperFurryPosition3D.position_now_y+2,PaperFurryPosition3D.position_now_z-5);  
+        cP.CameraPositionSet(PaperFurryPosition3D.position_now_x,PaperFurryPosition3D.position_now_y+2,PaperFurryPosition3D.position_now_z-8);  
     }
 }

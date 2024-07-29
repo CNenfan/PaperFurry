@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 4386450470438512544, guid: a82ab8d08fb7e6d43aa29d11f5968f9a, type: 3}
-  displacement: {x: 0, y: 1.48, z: 1}
+  displacement: {x: 1, y: 0.8, z: 2}
   fpsText: {fileID: 1659544053588844976}
   fpsUpdateTime: 0.3
   uidText: {fileID: 4300392516515932448}

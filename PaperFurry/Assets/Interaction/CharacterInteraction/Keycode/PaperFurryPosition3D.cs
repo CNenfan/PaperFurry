@@ -43,7 +43,7 @@ public class PaperFurryPosition3D : MonoBehaviour
         // 空格键跳跃
         if (isGrounded && Input.GetKeyDown(KeyCode.Space) && Time.time - lastJumpTime > jumpCooldown)
         {
-            Debug.Log("Grounded and Space pressed, attempting to jump.");
+            //Debug.Log("Grounded and Space pressed, attempting to jump.");
             isJumping = true;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             lastJumpTime = Time.time;

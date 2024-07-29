@@ -50,4 +50,16 @@ public class CameraFOVAdjuster : MonoBehaviour
         maxFov = newMaxFov;
         minFov = newMinFov;
     }
+
+    public void Update()
+    {
+        if(Input.GetKey(KeyCode.N))
+        {
+            ChangeFOV(-0.5f, true);
+        }
+        else if(Input.GetKey(KeyCode.M))
+        {
+            ChangeFOV(0.5f, true);
+        }
+    }
 }
