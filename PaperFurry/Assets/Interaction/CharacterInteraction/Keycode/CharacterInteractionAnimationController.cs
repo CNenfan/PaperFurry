@@ -101,24 +101,24 @@ public class CharacterInteractionAnimationController : MonoBehaviour
     }
 
     private IEnumerator FlipCoroutine(bool newFacingDirection)
-{
-    float targetAngle = newFacingDirection ? 0f : 180f;
-    Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
-    float startTime = Time.time;
-
-    while (true)
     {
-        float elapsed = Time.time - startTime;
-        float t = Mathf.Min(elapsed / flipDuration, 1f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
-        
+        float targetAngle = newFacingDirection ? 0f : 180f;
+        Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+        float startTime = Time.time;
 
-        if (t >= 1f)
+        while (true)
         {
-            yield break;
-        }
+            float elapsed = Time.time - startTime;
+            float t = Mathf.Min(elapsed / flipDuration, 1f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
+            
 
-        yield return null;
+            if (t >= 1f)
+            {
+                yield break;
+            }
+
+            yield return null;
+        }
     }
-}
 }
